@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `DomiApp`,
+    description: `Domicilios rápidos y completos. Siguenos en redes sociales. Baja la App en Play Store y App Store.`,
+    author: `@luchowebco`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

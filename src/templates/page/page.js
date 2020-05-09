@@ -1,9 +1,10 @@
 import React from 'react'
+import "bootstrap/dist/css/bootstrap.min.css"
 
 export default ({ pageContext }) => (
-  <div>
+  <main className={`container`}>
     <h1>
       { pageContext.title }
     </h1>
-  </div>
+  </main>
 );

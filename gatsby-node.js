@@ -44,7 +44,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         // Create Page pages.
-        const pageTemplate = path.resolve("./src/templates/page.js")
+        const pageTemplate = path.resolve("./src/templates/page/page.js")
         _.each(result.data.allWordpressPage.edges, edge => {
           createPage({
             path: `/${edge.node.slug}/`,
@@ -64,9 +64,23 @@ exports.createPages = ({ graphql, actions }) => {
                 edges {
                   node {
                     acf {
+                      product_image {
+                        source_url
+                      }
+                      product_brand {
+                        post_title
+                      }
+                      product_categories {
+                        post_title
+                      }
+                      product_discount
+                      product_image_secundary {
+                        source_url
+                      }
                       product_name
+                      product_price
                       product_sku
-                      product_image
+                      product_stock
                     }
                   }
                 }
@@ -78,10 +92,10 @@ exports.createPages = ({ graphql, actions }) => {
             console.log(result.errors)
             reject(result.errors)
           }
-          const productTemplate = path.resolve("./src/templates/product.js")
+          const productTemplate = path.resolve("./src/templates/product/product.js")
           _.each(result.data.allWordpressAcfProducts.edges, edge => {
             createPage({
-              path: `/producto/${edge.node.acf.product_name.replace(' ', '-')}/`,
+              path: `/producto/${edge.node.acf.product_name.toLowerCase().replace(/ /g, '-')}/`,
               component: slash(productTemplate),
               context: edge.node,
             })
